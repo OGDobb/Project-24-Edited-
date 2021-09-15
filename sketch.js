@@ -1,6 +1,6 @@
 
 const Engine = Matter.Engine;
-const World = matter.World;
+const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Render = Matter.Render;
@@ -15,20 +15,12 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-	dustbinObj=new dustbinObj(1200,650);
-	paperObject=new paperObject(200,450,40);
-	groundObject=new groundObject(width/2,670,width,20)
+	dustbinObj=new Box(1200,650);
+	paperObject=new Paper(200,450,40);
+	groundObject=new Ground(width/2,670,width,20);
 	
   
-	var render = Render.create({
-	element: document.body,
-	engine: engine
-	options: {
-		width: 1200,
-		height: 700,
-		wireframes: false
-	}
-	});
+	
 	Engine.run(engine);
 }
 
@@ -38,7 +30,7 @@ function draw() {
   background(0);
   
   dustbinObj.display();
-  paperObject.dsiplay();
+  paperObject.display();
   groundObject.display();
 
   
@@ -47,7 +39,7 @@ function draw() {
 
 function keyPressed() {
 if (keyCode === UP_ARROW) {
-	Matter.Body.applyForce(paperObject.body,paperObject.body.position,{x:85,y:85})};
+	Matter.Body.applyForce(paperObject.body,paperObject.body.position,{x:100,y:-80})};
 
 
 }
